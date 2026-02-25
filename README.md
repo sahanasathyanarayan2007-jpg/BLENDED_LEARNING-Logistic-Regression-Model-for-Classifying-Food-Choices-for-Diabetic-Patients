@@ -9,22 +9,129 @@ To implement a logistic regression model to classify food items for diabetic pat
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+```
+Load the food items dataset.
+
+Separate input features (nutrition values) and target label.
+
+Normalize the input features using MinMaxScaler.
+
+Encode the target variable using LabelEncoder.
+
+Split the dataset into training and testing sets.
+
+Train the Logistic Regression model on training data.
+
+Predict the class labels for test data.
+
+Evaluate the model using accuracy and other performance metrics.
+```
 
 ## Program:
 ```
 /*
 Program to implement Logistic Regression for classifying food choices based on nutritional information.
-Developed by: 
-RegisterNumber:  
+Developed by: Sahana.S
+RegisterNumber:  25004522
 */
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+
+from sklearn.linear_model import LogisticRegression
+
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
+
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
+
+import seaborn as sns
+
+import matplotlib.pyplot as plt
+
+# Load the dataset
+
+df= pd.read_csv('food_items (1).csv')
+
+#Inspect the dataset
+
+print('Name:')
+
+print('Reg. No: ')
+
+print("Dataset Overview:")
+
+print(df.head())
+
+print("\nDataset Info:")
+
+print(df.info())
+
+X_raw = df.iloc[:, :-1]
+
+y_raw = df.iloc[:, -1:]
+
+scaler= MinMaxScaler()
+
+# Scaling the raw input features
+
+X = scaler.fit_transform(X_raw)
+
+#Create a LabelEncoder object
+
+label_encoder = LabelEncoder()
+
+#Encode the target variable
+
+y = label_encoder.fit_transform(y_raw.values.ravel())
+
+#Note that ravel() function flattens the vector.
+
+#First, let's split the training and testing dataset
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state = 123)
+# L2 penalty to shrink coefficients without removing any features from the model
+penalty = 'l2'
+
+# Our classification problem is multinomial
+multi_class = 'multinomial'
+
+# Use lbfgs for L2 penalty and multinomial classes
+solver = 'lbfgs'
+
+# Max iteration = 1000
+max_iter = 1000
+
+# Define a logistic regression model with above arguments
+l2_model = LogisticRegression(random_state=123, penalty=penalty, multi_class=multi_class, solver=solver, max_iter=max_iter)
+
+l2_model.fit(X_train, y_train)
+y_pred = l2_model.predict(X_test)
+
+# Evaluate the model
+print('Name: Sahana.S')
+print('Reg. No:25004522 ')
+print("\nModel Evaluation:")
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+
+# Confusion Matrix
+conf_matrix = confusion_matrix(y_test, y_pred)
+print(conf_matrix)
+
+print('Name:SAHANA.S ')
+print('Reg. No:25004522 ')
 ```
 
 ## Output:
-![simple linear regression model for predicting the marks scored](sam.png)
+<img width="748" height="525" alt="image" src="https://github.com/user-attachments/assets/4ebcd157-f776-460e-8ee9-1f0f781e9d61" />
+![Uploading image.png…]()
+
+
+<img width="566" height="428" alt="image" src="https://github.com/user-attachments/assets/414399a3-f16d-4e4e-9f32-f704eda8c909" />
+
+
+
 
 
 ## Result:
