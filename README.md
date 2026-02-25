@@ -125,9 +125,7 @@ print('Reg. No:25004522 ')
 
 ## Output:
 <img width="748" height="525" alt="image" src="https://github.com/user-attachments/assets/4ebcd157-f776-460e-8ee9-1f0f781e9d61" />
-![Uploading image.png…]()
-
-
+<img width="493" height="526" alt="image" src="https://github.com/user-attachments/assets/be194428-35a2-4820-a331-d8de0d598b5b" />
 <img width="566" height="428" alt="image" src="https://github.com/user-attachments/assets/414399a3-f16d-4e4e-9f32-f704eda8c909" />
 
 
